@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>alCOLORholic</title> 
-    <base href = "">
     <meta charset = "UTF-8"/>
     <meta name = "viewport" content = "width = device-width, initial-scale = 1.0, user-scalable = 0"/>
     <style>
@@ -348,7 +347,7 @@
 <body>
     <div id = "wrapper">
         <header class = "primary">
-            <h2><a href = "home.html">al<span style = "color: #{{hexVal}};">COLOR</span>holic</a></h2>
+            <h2>al<span style = "color: #{{hexVal}};">COLOR</span>holic</h2>
         </header>
         
         <main class = "primary">
@@ -370,7 +369,7 @@
 
                                 <a class = "button" style = "background-color: #{{hexVal}};" onclick = "openForm()">Search</a>
 
-                                <a class = "button" style = "background-color: #{{hexVal}};" href = "https://littyling.github.io/alCOLORholic/templates/random.html">Random</a>
+                                <a class = "button" style = "background-color: #{{hexVal}};" href = "/random">Random</a>
 
                                 <br><br>
 
@@ -388,9 +387,9 @@
                                     document.addEventListener("keydown", function(e) {
                                         var form = document.getElementById("colorForm");
 
-                                        if (form.style.maxHeight == "50px" && e.key == "Enter") {
+                                        if (form.style.maxHeight == "50px" && e.key == "Enter" && document.getElementById("colorInput").value.length == 6) {
                                             var input = document.getElementById("colorInput");
-                                            window.location.assign("https://www.w3schools.com/" + input.value);
+                                            window.location.assign(window.location.href + input.value);
                                         }
                                     });
                                 </script>
