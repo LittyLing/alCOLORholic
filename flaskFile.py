@@ -8,11 +8,12 @@ apiSrc = "http://www.colr.org/json/color"
 
 @app.route('/')
 def home():
-   apiData = requests.get(apiSrc + "/random").json()["colors"]
-   nameData = apiData[0]["tags"][0]["name"].capitalize()
-   hexData = apiData[0]["hex"]
-   print nameData + ": " + hexData 
-   return render_template("home.html", name = nameData, hexVal = hexData)
+   #apiData = requests.get(apiSrc + "/random").json()["colors"]
+   #nameData = apiData[0]["tags"][0]["name"].capitalize()
+   #hexData = apiData[0]["hex"]
+   #print nameData + ": " + hexData 
+   #return render_template("home.html", name = nameData, hexVal = hexData)
+   return render_template('home.html')
 
 @app.route('/<string:hex>')
 def viewColor(hex):
