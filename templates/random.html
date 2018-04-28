@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>alCOLORholic</title> 
+    <base href = "">
+    <meta charset = "UTF-8"/>
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0, user-scalable = 0"/>
+    <style>
+        /* general document */
+        * {
+         box-sizing: border-box;
+        }
+
+        body {
+         background-color: #f5f5f5;
+         color: #000000;
+         margin: 0;
+         padding: 0;
+         clear: both;
+         text-align: left;
+         font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        }
+
+        #wrapper {
+         background-color: #f5f5f5;
+         width: 100%;
+         height: 100%;
+         margin: 0 auto;
+         position: relative;
+        }
+
+        /* header and navigation */
+        header.primary {
+         background-color: #fff;
+         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.15);
+         width: 100%;
+         margin: 0 auto;
+         padding: 10px;
+         position: fixed;
+         top: 0;
+         left: 0;
+         text-align: left;
+         line-height: 50%;
+         vertical-align: middle;
+         z-index: 100;
+         -webkit-user-select: none;
+         -ms-user-select: none;
+         -moz-user-select: none;
+         -o-user-select: none;
+         user-select: none;
+         -webkit-transition: background-color 1s, color 1.5s;
+         -ms-transition: background-color 1s, color 1.5s;
+         -moz-transition: background-color 1s, color 1.5s;
+         -o-transition: background-color 1s, color 1.5s;
+         transition: background-color 1s, color 1.5s;
+        }
+
+        header.primary h2 {
+         color: #263238;
+         margin-left: 30px;
+         float: left;
+         display: inline-block;
+         cursor: pointer;
+         font-weight: normal;
+        }
+
+        /*header.primary h2 span {
+         color: #f50057;
+        }*/
+
+        header.primary nav {
+         margin-top: 10px;
+         float: left;
+        }
+
+        a {
+         color: inherit;
+         text-decoration: none;
+         cursor: pointer;
+        }
+
+        .menuIcon {
+         margin-top: 5px;
+         display: block;
+         text-align: center;
+        }
+
+        .menuIcon div {
+         background-color: #0288D1;
+         width: 30px;
+         height: 3px;
+         margin-top: 5px;
+         display: block;
+         -webkit-transition: 0.3s;
+         -ms-transition: 0.3s;
+         -moz-transition: 0.3s;
+         -o-transition: 0.3s;
+         transition: 0.3s;
+        }
+
+        .menuIcon:hover .menuIconDiv {
+         background-color: #00B0FF;
+        }
+
+        .menuIcon.active .menuIconDiv {
+         background-color: #FFFFFF;
+        }
+
+        #navigationButtons {
+         background-color: #0288D1;
+         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.26)/*, inset 0px 5px 5px rgba(0, 0, 0, 0.26)*/;*/
+         width: 270px;
+         height: 10000px;
+         list-style: none;
+         padding: 60px 30px 10px 10px; 
+         overflow: hidden;
+         position: absolute;
+         top: -20px;
+         left: -500px;
+         z-index: -1;
+         -webkit-transition: 0.7s;
+         -ms-transition: 0.7s;
+         -moz-transition: 0.7s;
+         -o-transition: 0.7s;
+         transition: 0.7s;
+        }
+
+        #navigationButtons li a {
+         color: #FFFFFF;
+         opacity: 0.7;
+         margin-left: 10px;
+         padding: 15px;
+         display: block;
+         text-align: left;
+         font-size: 30px;
+         cursor: pointer;
+         -webkit-transition: color 0.3s ease-in-out 0s, opacity 1s;
+         -ms-transition: color 0.3s ease-in-out 0s, opacity 1s;
+         -moz-transition: color 0.3s ease-in-out 0s, opacity 1s;
+         -o-transition: color 0.3s ease-in-out 0s, opacity 1s;
+         transition: color 0.3s ease-in-out 0s, opacity 1s;
+        }
+
+        header.primary nav:hover #navigationButtons {
+         /*left: 0%;*/
+        }
+
+        #navigationButtons.links a:before {
+         background-color: #FFFFFF;
+        }
+
+        #navigationButtons li a:hover, #navigationButtons li a.active {
+         color: #FFFFFF;
+         opacity: 1;
+        }
+
+        /* document content */
+        main.primary {
+         width: 100%;
+         margin: 0 auto;
+         text-align: center;
+        }
+
+        .ghostButton {
+         background-color: none;
+         color: #0288D1;
+         border: 3px solid #0288D1;
+         margin: 10px;
+         padding: 20px 40px;
+         display: inline-block;
+         font-size: 25px;
+         text-align: center;
+         cursor: pointer;
+         -webkit-transition: background-color 1s, color 1s, opacity 1s;
+         -ms-transition: background-color 1s, color 1s, opacity 1s;
+         -moz-transition: background-color 1s, color 1s, opacity 1s;
+         -o-transition: background-color 1s, color 1s, opacity 1s;
+         transition: background-color 1s, color 1s, opacity 1s;
+        }
+
+        .ghostButton:hover, .ghostButton.active {
+         background-color: #0288D1;
+         color: #FFFFFF;
+        }
+
+        .button {
+         background-color: #ff5252;
+         color: #fff;
+         opacity: 0.8;
+         width: 150px;
+         text-align: center;
+         display: inline-block;
+         padding: 20px 10px;
+         cursor: pointer;
+         -webkit-transition: all 1s;
+         -ms-transition: all 1s;
+         -moz-transition: all 1s;
+         -o-transition: all 1s;
+         transition: all 1s;
+        }
+
+        .button:hover {
+         opacity: 1.0;
+        }
+
+        #colorForm {
+         display: block;
+         max-height: 0px;
+         overflow: hidden;
+         -webkit-transition: 0.7s;
+         -ms-transition: 0.7s;
+         -moz-transition: 0.7s;
+         -o-transition: 0.7s;
+         transition: 0.7s;
+        }
+
+        .pageContentWrapper {
+         width: 100%;
+         min-height: 700px;
+         margin: auto;
+         padding: 100px 10px 10px 10px;
+        }
+
+        .pageContentWrapper section.main {
+         color: #000000;
+         width: 90%;
+         margin: auto;
+        }
+
+        .pageContentWrapper article {
+         display: block;
+         text-align: left;
+        }
+
+        .pageContentWrapper article div.content {
+         text-align: left;
+        }
+
+        .pageContentWrapper article span.heading {
+         display: block;
+         font-size: 30px;
+         font-weight: bold;
+        }
+
+        .pageContentWrapper article span.subheading {
+         display: block;
+         font-size: 25px;
+         font-weight: bold;
+        }
+
+        .pageContentWrapper article div.content p {
+         font-size: 25px;
+        }
+
+        .pageContentWrapper article footer {
+         color: #90a4ae;
+         font-size: 15px;
+        }
+
+        hr {
+         width: 100%;
+         height: 2px;
+         border-width: 0;
+        }
+
+        .pageContentWrapper article hr {
+         background-color: #CFD8DC;
+        }
+
+        .links a {
+         opacity: 1;
+         position: relative;
+         -webkit-transition: color 0.3s ease-in-out 0s;
+         -ms-transition: color 0.3s ease-in-out 0s;
+         -moz-transition: color 0.3s ease-in-out 0s;
+         -o-transition: color 0.3s ease-in-out 0s;
+         transition: color 0.3s ease-in-out 0s;
+        }
+
+        .links a:before {
+         visibility: hidden;
+         width: 100%;
+         height: 2px; 
+         content: "";
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         -webkit-transform: scaleX(0);
+         -ms-transform: scaleX(0);
+         -moz-transform: scaleX(0);
+         -o-transform: scaleX(0);
+         transform: scaleX(0);
+         -webkit-transition: 0.3s ease-in-out 0s;
+         -ms-transition: 0.3s ease-in-out 0s;
+         -moz-transition: 0.3s ease-in-out 0s;
+         -o-transition: 0.3s ease-in-out 0s;
+         transition: 0.3s ease-in-out 0s;
+        }
+
+        .links a:hover:before, .links a.active:before {
+         visibility: visible;
+         -webkit-transform: scaleX(1);
+         transform: scaleX(1);
+        }
+
+        span.links a.icon {
+         margin: 5px;
+        }
+
+        /* footer */
+        footer.primary {
+         /*box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.26);*/
+         background-color: #263238;
+         color: rgba(255, 255, 255, 0.9);
+         width: 100%;
+         padding: 10px;
+         float: left;
+         clear: both;
+         text-align: center;
+        }
+
+        footer.primary span.heading {
+         font-size: 25px;
+         display: block;
+         margin-bottom: 5px;
+        }
+
+        footer.primary span.links {
+         display: inline-block;
+         position: relative;
+         margin: 5px;
+        }
+
+        footer.primary span.links a {
+         color: rgba(255, 255, 255, 0.7);
+        }
+
+        footer.primary span.links a:hover {
+         color: rgba(255, 255, 255, 0.9);
+        }
+
+        footer.primary hr {
+         background-color: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div id = "wrapper">
+        <header class = "primary">
+            <h2><a href = "home.html">al<span style = "color: #{{hexVal}};">COLOR</span>holic</a></h2>
+        </header>
+        
+        <main class = "primary">
+            <div class = "contact pageContentWrapper" id = "contactContentWrapper">
+                <section class = "main">
+                    <article>
+                        <header>
+                            <span class = "heading">Random Color Generator</span>
+                        </header>
+                        
+                        <div class = "content">
+                            <p>
+                                Color Name: {{name}}<br>
+                                Color Hex: #{{hexVal}}
+
+                                <div style = "background-color: #{{hexVal}}; width: 300px; height: 300px;"></div>
+                            </p>
+                        </div>
+
+                        <footer>Data from <a href = "http://www.colr.org/api.html" target = "_blank">http://www.colr.org</a></footer>
+                    </article>
+                </section>
+            </div>
+        </main>
+        
+        <footer class = "primary">
+            <section class = "main">
+                <article>
+                    <header>
+                        <span class = "heading">alCOLORholic</span>
+                    </header>
+                        
+                    <footer>
+                        <span>&copy Litty Ling Inc. | All Rights Reserved</span>
+                    </footer>
+                </article>
+            </section>
+        </footer>
+    </div>
+</body>
+</html>
