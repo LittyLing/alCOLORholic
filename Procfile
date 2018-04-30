@@ -1,1 +1,1 @@
-web: python flaskFile.py $PORT
+web: python app.py $PORT
